@@ -1,0 +1,10 @@
+name: "chkk"
+version: "0.0.1"
+usage: "Check helm charts for reliability risks"
+description: "Chkk Helm plugin scans your Helm charts for reliability risks."
+ignoreFlags: false
+command: "$HELM_PLUGIN_DIR/scripts/run.sh"
+
+hooks:
+  install: "$HELM_PLUGIN_DIR/scripts/install.sh"
+  update: "$HELM_PLUGIN_DIR/scripts/install.sh"
