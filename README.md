@@ -7,8 +7,7 @@ A Helm plugin for using Chkk to catch reliability risks in your Helm charts.
 Install the Chkk plugin using the built in `helm plugin install` command provided by the Helm plugin manager.
 
 ```bash
-$ cd <path_to_helm-chkk_directory>/helm-chkk
-$ helm plugin install .
+helm plugin install https://github.com/chkk-io/helm-chkk
 ```
 
 The plugin connects to the Chkk service to lookup reliability risks information. If you don't already have your personal access token, go to [https://www.chkk.dev](https://www.chkk.dev) to sign up for free and get the access token.
@@ -24,6 +23,7 @@ export CHKK_ACCESS_TOKEN=<your-chkk-access-token>
 Run `helm chkk` command and point it to the Helm chart you want to run checks on. For example:
 
 ```console
+$ helm repo add coredns https://coredns.github.io/helm
 $ helm chkk coredns coredns/coredns
 
 [FAILED] [CHKK-K8S-36] [High Severity] [Type: Reliability] Image pull policy should not be set to Always

@@ -4,12 +4,13 @@
 # helm/plugins folder
 
 set -e
+# Set $HELM_PLUGIN_DIR as the current working directory
+cd $HELM_PLUGIN_DIR
+
 PROJECT_NAME="helm-chkk"
 HELM_CHKK_VERSION="$(cat plugin.yaml | grep "version" | cut -d '"' -f 2)"
 echo "Installing helm-chkk v${HELM_CHKK_VERSION} ..."
 
-# Set $HELM_PLUGIN_DIR as the current working directory
-cd $HELM_PLUGIN_DIR
 
 
 # init_arch discovers the architecture for the target system.
@@ -62,14 +63,11 @@ install_plugin() {
   echo "$PROJECT_NAME installed into ${HELM_PLUGIN_DIR}"
 }
 
-# fail_trap is executed if an error occurs during installation.
-fail_trap() {
-  local __result=$?
-  if [ "$r__result" != "0" ]; then
-    echo "Failed to install $PROJECT_NAME"
-    echo "For support, go to https://github.com/kubernetes/helm"
+# catch is executed if an error occurs during installation.
+catch() {
+  if [ "$1" != "0" ]; then
+    echo "Error occurred on line: $2 status: $1"
   fi
-  exit $__result
 }
 
 # test_version verifies the installed plugin is working correctly
@@ -80,7 +78,7 @@ test_version() {
 }
 
 # Stop script execution on any error
-trap "fail_trap" EXIT
+trap 'catch $? $LINENO' EXIT
 
 init_arch
 init_os
