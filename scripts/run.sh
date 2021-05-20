@@ -19,11 +19,11 @@ do
                 $HELM_PLUGIN_DIR/bin/chkk $1
                 exit
                 ;;
-            --continue-on-error|--hide-diff)
+            --continue-on-error|--show-diff)
                 chkk_options+=("$1")
                 shift
                 ;;
-            --run-checks|-r|--skip-checks|-s)
+            --run-checks|-r|--skip-checks|-s|--check-type|-t)
                 chkk_options+=("$1")
                 chkk_options+=("$2")
                 shift 2

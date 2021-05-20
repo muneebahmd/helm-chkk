@@ -25,23 +25,15 @@ Run `helm chkk` command and point it to the Helm chart you want to run checks on
 
 ```console
 $ helm chkk coredns coredns/coredns
-[FAILED] [CHKK-K8S-36] [High Severity] Image pull policy should not be set to Always
-   Impact: imagePullPolicy=Always means you're exercising your dependencies on every container launch.
-   If there's network disruption or the registry is down, your application launch will fail.
 
-   Recommendations:
-      (1) Set ImagePullPolicy to IfNotPresent for each container.
-
-   Knowledge base:  https://docs.chkk.dev/docs/chkk-k8s-36
+[FAILED] [CHKK-K8S-36] [High Severity] [Type: Reliability] Image pull policy should not be set to Always
+Recommendation: Set ImagePullPolicy to IfNotPresent for each container.
+Knowledge base: https://docs.chkk.dev/docs/chkk-k8s-36
 ...
 
-Target manifest:  coredns.yaml
-Found  5 issues with High severity
-Found  1 issues with Medium severity
-Found  3 issues with Low severity
 Summary:
-	Total Passed: 11
-	Total Failed: 9
+	Total Passed: 8
+	Total Failed: 3
 	Total Skipped: 0
 ...
 ```
@@ -59,8 +51,9 @@ Chkk has properties that allow a user to run or skip specific checks. These opti
 | --file, -f | | The name of the Kubernetes manifest file you want to test.|
 | --skip-checks, -s | | Skip specified list of comma separated checks in the run.|
 | --run-checks, -r | | Run specified list of comma separated checks in the run.|
-| --hide-diff         | false   | Hide code-diff in result output               |
+| --show-diff         | false   | Show code-diff in result output               |
 | --continue-on-error | false | Do not raise error in case a check fails |
+| --check-type | reliability | Run specific type of checks. Available options: [all/reliability/security] |
 
 
 For further options and features, please refer to the help instructions with the `helm chkk --help` flag.
