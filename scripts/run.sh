@@ -16,7 +16,7 @@ do
                 exit
                 ;;
             --help|-h|--list|config)
-                $HELM_PLUGIN_DIR/bin/chkk $1
+                $HELM_PLUGIN_DIR/bin/helm-chkk $1
                 exit
                 ;;
             --continue-on-error|--show-diff)
@@ -39,7 +39,13 @@ do
     fi
 done
 
+if [ -z "${helm_options[0]}" ]
+then
+    $HELM_PLUGIN_DIR/bin/helm-chkk -h
+    exit
+fi
+
 echo "Rendering template for ${helm_options[0]} ..."
 render=$(${HELM_BIN} template "${helm_options[@]}")
 
-$HELM_PLUGIN_DIR/bin/chkk -- -f "$render" --name "${helm_options[0]}" "${chkk_options[@]}"
+$HELM_PLUGIN_DIR/bin/helm-chkk -- -f "$render" --name "${helm_options[0]}" "${chkk_options[@]}"

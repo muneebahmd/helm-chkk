@@ -50,8 +50,8 @@ download_package() {
   local __cli_version="0.0.1"
   local __download_url="https://downloads.chkk.dev/v${__cli_version}/chkk-${OS}-${ARCH}"
   echo "Downloading helm-chkk package" 
-  curl -sSLo chkk $__download_url
-  chmod +x chkk
+  curl -sSLo helm-chkk $__download_url
+  chmod +x helm-chkk
 }
 
 # install_plugin installs the helm-chkk plugin by copying the binary
@@ -59,7 +59,7 @@ download_package() {
 install_plugin() {
   echo "Preparing to install into ${HELM_PLUGIN_DIR}"
   rm -rf bin && mkdir bin
-  mv chkk bin/
+  mv helm-chkk bin/
   echo "$PROJECT_NAME installed into ${HELM_PLUGIN_DIR}"
 }
 
