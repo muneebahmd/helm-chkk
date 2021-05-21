@@ -39,6 +39,12 @@ do
     fi
 done
 
+if [ -z "${helm_options[0]}" ]
+then
+    $HELM_PLUGIN_DIR/bin/helm-chkk -h
+    exit
+fi
+
 echo "Rendering template for ${helm_options[0]} ..."
 render=$(${HELM_BIN} template "${helm_options[@]}")
 

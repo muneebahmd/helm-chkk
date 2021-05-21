@@ -48,7 +48,6 @@ Chkk has properties that allow a user to run or skip specific checks. These opti
 
 | Flag | Default | Description |
 | :---: |:---: | :---: |
-| --file, -f | | The name of the Kubernetes manifest file you want to test.|
 | --skip-checks, -s | | Skip specified list of comma separated checks in the run.|
 | --run-checks, -r | | Run specified list of comma separated checks in the run.|
 | --show-diff         | false   | Show code-diff in result output               |
