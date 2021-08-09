@@ -1,4 +1,17 @@
-#! /bin/bash -e
+#!/usr/bin/env bash
+# Copyright © 2021 Chkk <support@chkk.io>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 # Install helm-chkk as Helm plugin by downloading the Chkk CLI package and copying it to
 # helm/plugins folder
@@ -47,8 +60,8 @@ verify_supported() {
 # download_package downloads the Chkk CLI package from remote
 # repository.
 download_package() {
-  local __cli_version="0.0.1"
-  local __download_url="https://downloads.chkk.dev/v${__cli_version}/chkk-${OS}-${ARCH}"
+  local __cli_version=`curl -sS https://get.chkk.dev/cli/latest.txt`
+  local __download_url="https://get.chkk.dev/${__cli_version}/chkk-${OS}-${ARCH}"
   echo "Downloading helm-chkk package" 
   curl -sSLo helm-chkk $__download_url
   chmod +x helm-chkk
