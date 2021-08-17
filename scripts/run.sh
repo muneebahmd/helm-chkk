@@ -23,7 +23,7 @@ do
                 chkk_options+=("$1")
                 shift
                 ;;
-            --run-checks|-r|--skip-checks|-s|--check-type|-t)
+            --checks|-c|--suppressions|-s|--check-type|-t)
                 chkk_options+=("$1")
                 chkk_options+=("$2")
                 shift 2

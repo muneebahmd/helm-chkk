@@ -51,11 +51,11 @@ Chkk has properties that allow a user to run or skip specific checks. These opti
 
 | Flag | Default | Description |
 | :---: |:---: | :---: |
-| --skip-checks, -s | | Skip specified list of comma separated checks in the run.|
-| --run-checks, -r | | Run specified list of comma separated checks in the run.|
+| --suppressions, -s | | Skip specified list of comma separated checks in the run.|
+| --checks, -c | | Run specified list of comma separated checks in the run.|
 | --show-diff         | false   | Show code-diff in result output               |
 | --continue-on-error | false | Do not raise error in case a check fails |
-| --check-type | all | Run specific type of checks. Available options: [all, reliability, security, apideprecation, operatingsystem, livenessreadinessprobe, resourcelimit] |
+| --check-type, t | all | Run specific type of checks. Available options: [all, reliability, security, apideprecation, operatingsystem, livenessreadinessprobe, resourcelimit] |
 
 
 For further options and features, please refer to the help instructions with the `helm chkk --help` flag.

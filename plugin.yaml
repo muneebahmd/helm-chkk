@@ -1,5 +1,5 @@
 name: "chkk"
-version: "0.1.0"
+version: "0.1.2"
 usage: "Check helm charts for reliability risks"
 description: "Chkk Helm plugin scans your Helm charts for reliability risks."
 ignoreFlags: false
